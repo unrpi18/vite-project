@@ -1,52 +1,51 @@
 import React from 'react';
-import {Box, Container, Typography, Button, Divider} from '@mui/material';
-import Grid from '@mui/material/Unstable_Grid2';
 import AppAppBar from "./AppAppBar.jsx";
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+
 const ResponsiveLayout = () => {
     return (
-        <Container maxWidth={false} sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            maxHeight: '100vh',
-            minWidth: '100%',
-            backgroundColor: 'red',
-            color:'white',
+        <Box sx={{ 
+            display: 'flex', 
+            flexDirection: 'column', 
+            minHeight: '100vh', 
+            width: '100vw',
+            maxWidth: '100%',
+            overflow: 'hidden',
         }}>
-            < AppAppBar/>
-            {/* Main Content and Sidebar */}
-            <Divider />
-            <Box sx={{ flex: '1 0 auto', display: 'flex', flexDirection: 'column', width: '100%', mx: 0 }}>
-                <Grid container spacing={2} sx={{ flex: '1 0 auto', width: '100%', mx: 0 }}>
+            <AppAppBar />
+            
+            {/* 大海报区域 */}
+            {/* 原有的内容区域 */}
+            <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+                <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '2fr 1fr' }, gap: 2, p: 2 }}>
                     {/* Main Content */}
-                    <Grid item xs={12} md={8} sx={{ display: 'flex', flexDirection: 'column' }}>
-                        <Box sx={{ backgroundColor: 'secondary.main', color: 'white', p: 2, flex: '1 0 auto', mx: 0 }}>
-                            <Typography variant="h5">Main Content</Typography>
-                            <Typography>
-                                This is the main content area. It will take 100% width on small screens and 8/12 (two-thirds) on medium and larger screens.
-                            </Typography>
-                        </Box>
-                    </Grid>
+                    <Box sx={{ backgroundColor: 'blue', p: 2 }}>
+                        <Typography variant="h5">主要内容</Typography>
+                        <Typography>
+                            这是主要内容区域。在小屏幕上它会占据100%宽度，在中等及更大的屏幕上会占据2/3的宽度。
+                        </Typography>
+                    </Box>
 
                     {/* Sidebar */}
-                    <Grid item xs={12} md={4} sx={{ display: 'flex', flexDirection: 'column' }}>
-                        <Box sx={{ backgroundColor: 'error.main', color: 'white', p: 2, flex: '1 0 auto', mx: 0 }}>
-                            <Typography variant="h5">Sidebar</Typography>
-                            <Typography>
-                                This is the sidebar area. It will take 100% width on small screens and 4/12 (one-third) on medium and larger screens.
-                            </Typography>
-                        </Box>
-                    </Grid>
-                </Grid>
+                    <Box sx={{ backgroundColor: 'darkred', p: 2 }}>
+                        <Typography variant="h5">侧边栏</Typography>
+                        <Typography>
+                            这是侧边栏区域。在小屏幕上它会占据100%宽度，在中等及更大的屏幕上会占据1/3的宽度。
+                        </Typography>
+                    </Box>
+                </Box>
             </Box>
 
             {/* Footer */}
-            <Box sx={{ backgroundColor: 'text.secondary', color: 'white', p: 2, width: '100%', mx: 0 }}>
-                <Typography variant="h6">Footer</Typography>
+            <Box sx={{ backgroundColor: 'gray', width: '100%', p: 2 }}>
+                <Typography variant="h6">页脚</Typography>
                 <Button variant="contained" color="primary">
-                    Action
+                    操作
                 </Button>
             </Box>
-        </Container>
+        </Box>
     );
 };
 
